@@ -1,4 +1,9 @@
+package com.company;
 import java.util.Scanner;
+
+/**
+ * Created by rstoke on 12/7/16.
+ */
 
 public class Game{
     Scanner sc = new Scanner(System.in);
@@ -29,7 +34,7 @@ public class Game{
         if(!grid.isNotFinished(token[0])){
             return false;
         }
-        
+
         System.out.println("Joueur 2");
         grid.addToken(token[1], this.sc.nextInt() - 1);
         displayGrid();
