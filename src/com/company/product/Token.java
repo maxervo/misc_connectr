@@ -1,4 +1,4 @@
-package com.company;
+package com.company.product;
 
 /**
  * Created by rstoke on 12/7/16.
