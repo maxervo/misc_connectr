@@ -6,6 +6,8 @@ package com.company.product;
 public class Token {
     char token;
 
+    public Token(){ setToken(Character.MIN_VALUE); }
+
     public Token(char token){
         setToken(token);
     }
@@ -14,8 +16,8 @@ public class Token {
         return this.token;
     }
 
-    public void setToken(char token){
-        if (token == 'x' || token == 'o'){
+    private void setToken(char token) {     //used internally only
+        if (token == 'x' || token == 'o' || token == Character.MIN_VALUE){  //empty character
             this.token = token;
         }
         /*else{

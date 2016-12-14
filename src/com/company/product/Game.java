@@ -1,6 +1,8 @@
 package com.company.product;
 import java.util.Scanner;
 
+import com.company.behavior.HumanStrategy;
+
 /**
  * Created by rstoke on 12/7/16.
  */
@@ -8,10 +10,9 @@ import java.util.Scanner;
 public class Game{
     Scanner sc = new Scanner(System.in);
     Grid grid = new Grid();
-    // Ajout futur de player
+    Token token = new Token('x');
 
-
-    public void displayGrid(){
+    public void displayGrid() {
         for(int i = 0; i < grid.getGrid().length; i++){
             for(int j = 0; j < grid.getGrid()[i].length; j++){
                 if ( (j + 1) == grid.getGrid()[i].length){
@@ -25,7 +26,10 @@ public class Game{
     }
 
     // test pas d'arg normalement
-    public boolean round(Token[] token){
+    public boolean round(Token[] token) {
+        Player player = new Player(1, "hello", token[0], new HumanStrategy());
+        System.out.println("test " + player.getBehavior().decide());
+
         // test ici il y aura deux joueur et non 2 token
         int pos[] = new int[2];
         System.out.println("Joueur 1");
