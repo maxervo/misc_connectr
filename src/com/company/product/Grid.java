@@ -25,7 +25,7 @@ public class Grid {
         }
     }
 
-    private boolean isInGrid(int i, int j){// the first ligne can't contain a token
+    private boolean isInGrid(int i, int j){// the first lign cannot contain a token
         if (i<(grid.length) && j<grid[0].length && i>0 && j>-1){
             return true;
         }
@@ -43,17 +43,18 @@ public class Grid {
         return this.grid;
     }
 
-    public int[] addToken(Token token, int col){
-        int pos[] = {-1,-1};
-        for(int i = (grid.length - 1); i >= 0; i--){
-            if (grid[i][col] == '.'){
-                grid[i][col] = token.getToken();
-                pos[0] = i;
-                pos[1] = col;
-                return pos;
+    public void addToken(Token token, int col) throws ExceptionOutOfGrid {
+        if(col <0 || col >6){
+            throw new ExceptionOutOfGrid();
+        }
+        else{
+            for(int i = (grid.length - 1); i >= 0; i--){
+                if (grid[i][col] == '.'){
+                    grid[i][col] = token.getToken();
+                    break;
+                }
             }
         }
-        return pos;
     }
 
 

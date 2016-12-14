@@ -1,16 +1,30 @@
 package com.company.product;
-import java.util.Scanner;
-
 import com.company.behavior.HumanStrategy;
+
+import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by rstoke on 12/7/16.
  */
 
 public class Game{
-    Scanner sc = new Scanner(System.in);
-    Grid grid = new Grid();
-    Token token = new Token('x');
+    private Scanner sc = new Scanner(System.in);
+    private Grid grid;
+    private List playerPool;
+    private ListIterator playerPoolIterator;
+
+    public Game() {
+        this.grid = new Grid();
+        this.playerPool = new LinkedList();
+
+        //TODO load parameters
+        this.playerPool.add( new Player(1, "loic", new Token('x'), new HumanStrategy()) );
+        this.playerPool.add( new Player(2, "eric", new Token('o'), new HumanStrategy()) );
+        this.playerPoolIterator = this.playerPool.listIterator();   //TODO change place
+    }
 
     public void displayGrid() {
         for(int i = 0; i < grid.getGrid().length; i++){
@@ -25,25 +39,30 @@ public class Game{
         }
     }
 
-    // test pas d'arg normalement
-    public boolean round(Token[] token) {
-        Player player = new Player(1, "hello", token[0], new HumanStrategy());
-        System.out.println("test " + player.getBehavior().decide());
+    public boolean play() {
 
-        // test ici il y aura deux joueur et non 2 token
-        int pos[] = new int[2];
-        System.out.println("Joueur 1");
-        grid.addToken(token[0], this.sc.nextInt() - 1);
-        displayGrid();
-        if(!grid.isNotFinished(token[0])){
-            return false;
+        Player player;
+
+        if (playerPoolIterator.hasNext()) {
+            System.out.println("hello bitch");
+            player = (Player) playerPoolIterator.next();    // TODO verifiy if cast design cool
+        }
+        else {
+            playerPoolIterator = this.playerPool.listIterator();
+            player = (Player) playerPoolIterator.next();    // TODO verifiy if cast design cool, TODO do java 8 change compiler
         }
 
-        System.out.println("Joueur 2");
-        grid.addToken(token[1], this.sc.nextInt() - 1);
+
+        System.out.println("turn " + player.getName());
+        try {
+            grid.addToken(player.getToken(), player.behavior.decide());
+        } catch (ExceptionOutOfGrid e) {
+            return true;
+        }
+
         displayGrid();
-        return grid.isNotFinished(token[1]);
 
+        //return grid.isNotFinished(new Token('x'));
+        return grid.isNotFinished(player.getToken());
     }
-
 }
