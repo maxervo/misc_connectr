@@ -53,6 +53,11 @@ public class Grid {
                     grid[i][col] = token.getToken();
                     break;
                 }
+                else{
+                    if (i == 0){ // if there is no more space for a new token
+                        throw new ExceptionOutOfGrid(col);
+                    }
+                }
             }
         }
     }

@@ -1,5 +1,7 @@
 package com.company.product;
 import com.company.behavior.HumanStrategy;
+import com.company.behavior.IAMonkeyStrategy;
+import com.company.behavior.IARandom;
 
 import java.util.Scanner;
 import java.util.LinkedList;
@@ -15,6 +17,11 @@ public class Game{
     private Grid grid;
     private List<Player> playerPool;
     private ListIterator<Player> playerPoolIterator;
+
+    private Player player;
+
+    // Test to use different behavior during the game
+    private int nbTurn = 0;
 
     public Game() {
         this.grid = new Grid();
@@ -41,8 +48,19 @@ public class Game{
 
     public boolean play() {
 
-        Player player;
+        //Player player; // current player put in game attribute. Maybe there is a better design
+        if (player == null){ // for the first round
+            player =  playerPoolIterator.next();
+        }
 
+        System.out.println("turn " + player.getName());
+        try {
+            grid.addToken(player.getToken(), player.behavior.decide());
+        } catch (ExceptionOutOfGrid e) {
+            return true; // loop with same player
+        }
+
+        // Assignment after the catch to conserve the current player if a exception is thrown by this current player.
         if (playerPoolIterator.hasNext()) {
             System.out.println("hello bitch");
             player =  playerPoolIterator.next();    // DONE verifiy if cast design cool
@@ -52,17 +70,13 @@ public class Game{
             player =  playerPoolIterator.next();    // DONE verifiy if cast design cool, TODO do java 8 change compiler
         }
 
-
-        System.out.println("turn " + player.getName());
-        try {
-            grid.addToken(player.getToken(), player.behavior.decide());
-        } catch (ExceptionOutOfGrid e) {
-            return true;
-        }
-
         displayGrid();
 
-        //return grid.isNotFinished(new Token('x'));
+        // test behavior
+        nbTurn++;
+        if(nbTurn == 3){
+            playerPoolIterator.previous().setBehavior(new IARandom());
+        }
         return grid.isNotFinished(player.getToken());
     }
 }
