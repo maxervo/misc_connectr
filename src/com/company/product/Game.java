@@ -13,12 +13,12 @@ import java.util.ListIterator;
 public class Game{
     private Scanner sc = new Scanner(System.in);
     private Grid grid;
-    private List playerPool;
-    private ListIterator playerPoolIterator;
+    private List<Player> playerPool;
+    private ListIterator<Player> playerPoolIterator;
 
     public Game() {
         this.grid = new Grid();
-        this.playerPool = new LinkedList();
+        this.playerPool = new LinkedList<Player>();
 
         //TODO load parameters
         this.playerPool.add( new Player(1, "loic", new Token('x'), new HumanStrategy()) );
@@ -45,11 +45,11 @@ public class Game{
 
         if (playerPoolIterator.hasNext()) {
             System.out.println("hello bitch");
-            player = (Player) playerPoolIterator.next();    // TODO verifiy if cast design cool
+            player =  playerPoolIterator.next();    // DONE verifiy if cast design cool
         }
         else {
             playerPoolIterator = this.playerPool.listIterator();
-            player = (Player) playerPoolIterator.next();    // TODO verifiy if cast design cool, TODO do java 8 change compiler
+            player =  playerPoolIterator.next();    // DONE verifiy if cast design cool, TODO do java 8 change compiler
         }
 
 
