@@ -9,8 +9,9 @@ public class IAMonkeyStrategy implements Behavior {
 
     }
 
+    @Override
     public int decide() {
-        return 1;
+        return ((int) (Math.random() * (7 - 1 + 1)) + 1);
     }
 
 }

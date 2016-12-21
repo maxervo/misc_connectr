@@ -63,6 +63,8 @@ public class Grid {
     }
 
 
+    //TODO maybe think better algorithm, instead of verifying whole at end of every turn,
+    //maybe verify at the end of "add token" because victory linked to end of action of a player
     public boolean isNotFinished(Token token){
         int flagVictory[] = new int[8];
 

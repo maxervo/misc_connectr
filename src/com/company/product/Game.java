@@ -1,12 +1,13 @@
 package com.company.product;
 import com.company.behavior.HumanStrategy;
 import com.company.behavior.IAMonkeyStrategy;
-import com.company.behavior.IARandom;
 
 import java.util.Scanner;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+
+//TODO do java 8 change compiler
 
 /**
  * Created by rstoke on 12/7/16.
@@ -18,10 +19,9 @@ public class Game{
     private List<Player> playerPool;
     private ListIterator<Player> playerPoolIterator;
 
-    private Player player;
-
-    // Test to use different behavior during the game
-    private int nbTurn = 0;
+    // Test block
+    // to use different behavior during the game
+    private int testNbTurn = 0;
 
     public Game() {
         this.grid = new Grid();
@@ -48,8 +48,13 @@ public class Game{
 
     public boolean play() {
 
-        //Player player; // current player put in game attribute. Maybe there is a better design
-        if (player == null){ // for the first round
+        Player player;
+
+        if (playerPoolIterator.hasNext()) {
+            player =  playerPoolIterator.next();
+        }
+        else {
+            playerPoolIterator = this.playerPool.listIterator();
             player =  playerPoolIterator.next();
         }
 
@@ -57,26 +62,19 @@ public class Game{
         try {
             grid.addToken(player.getToken(), player.behavior.decide());
         } catch (ExceptionOutOfGrid e) {
+            playerPoolIterator.previous();
             return true; // loop with same player
-        }
-
-        // Assignment after the catch to conserve the current player if a exception is thrown by this current player.
-        if (playerPoolIterator.hasNext()) {
-            System.out.println("hello bitch");
-            player =  playerPoolIterator.next();    // DONE verifiy if cast design cool
-        }
-        else {
-            playerPoolIterator = this.playerPool.listIterator();
-            player =  playerPoolIterator.next();    // DONE verifiy if cast design cool, TODO do java 8 change compiler
         }
 
         displayGrid();
 
-        // test behavior
-        nbTurn++;
-        if(nbTurn == 3){
-            playerPoolIterator.previous().setBehavior(new IARandom());
-        }
+        //Test block
+        /*
+        testNbTurn++;
+        if(testNbTurn == 3){
+            playerPoolIterator.previous().setBehavior(new IAMonkeyStrategy());
+        }*/
+
         return grid.isNotFinished(player.getToken());
     }
 }
