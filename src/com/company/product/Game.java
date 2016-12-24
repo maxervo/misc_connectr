@@ -2,7 +2,6 @@ package com.company.product;
 import com.company.behavior.HumanStrategy;
 import com.company.behavior.IAMonkeyStrategy;
 
-import java.util.Scanner;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -14,9 +13,10 @@ import java.util.ListIterator;
  */
 
 public class Game{
-    private Scanner sc = new Scanner(System.in);
     private Grid grid;
-    private List<Player> playerPool;
+    private Menu menu;
+
+    private List<Player> playerPool;    //circular list to hold player pool
     private ListIterator<Player> playerPoolIterator;
 
     // Test block
@@ -25,14 +25,21 @@ public class Game{
 
     public Game() {
         this.grid = new Grid();
-        this.playerPool = new LinkedList<Player>();
+        this.menu = new Menu();
 
-        //TODO load parameters
-        this.playerPool.add( new Player(1, "loic", new Token('x'), new HumanStrategy()) );
-        this.playerPool.add( new Player(2, "eric", new Token('o'), new HumanStrategy()) );
-        this.playerPoolIterator = this.playerPool.listIterator();   //TODO change place
+        //Create players
+        menu.choosePlayerNames();
+        spawnPlayers(this.menu);
     }
 
+    private void spawnPlayers(Menu menu) {
+        this.playerPool = new LinkedList<Player>();
+        this.playerPool.add( new Player(1, menu.getPlayer1(), new Token('x'), new HumanStrategy()) );
+        this.playerPool.add( new Player(2, menu.getPlayer2(), new Token('o'), new HumanStrategy()) );
+        this.playerPoolIterator = this.playerPool.listIterator();
+    }
+
+    //TODO put displayGrid() in Grid class and do displayGame() which uses: displayGrid() and display game information -> Always think self-contained, one responsability
     public void displayGrid() {
         for(int i = 0; i < grid.getGrid().length; i++){
             for(int j = 0; j < grid.getGrid()[i].length; j++){
@@ -58,7 +65,8 @@ public class Game{
             player =  playerPoolIterator.next();
         }
 
-        System.out.println("turn " + player.getName());
+        System.out.println("Turn " + player.getName());
+
         try {
             grid.addToken(player.getToken(), player.behavior.decide());
         } catch (ExceptionOutOfGrid e) {
@@ -77,4 +85,15 @@ public class Game{
 
         return grid.isNotFinished(player.getToken());
     }
+
+
+    /*
+    public void play(Player player) {
+        try {
+            grid.addToken(player.getToken(), player.behavior.decide());
+        } catch (ExceptionOutOfGrid e) {
+            playerPoolIterator.previous();
+            return true; // loop with same player
+        }
+    }*/
 }

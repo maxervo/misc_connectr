@@ -3,6 +3,9 @@ package com.company.product;
 /**
  * Created by rstoke on 12/14/16.
  */
+
+//TODO change to Exception keyword as suffix, convention
+//TODO this is validating a user input, so do not use exceptions
 class ExceptionOutOfGrid extends Exception {
 
     public ExceptionOutOfGrid() {
