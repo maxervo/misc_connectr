@@ -6,10 +6,6 @@ package com.company.product;
 public class Token {
     char token;
 
-    public static boolean isTokenValue(char val) {
-        return (val == 'x')||(val == 'o');
-    }
-
     public Token(){ setToken(Character.MIN_VALUE); }
 
     public Token(char token){

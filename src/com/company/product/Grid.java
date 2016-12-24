@@ -1,6 +1,5 @@
 package com.company.product;
-import java.util.Arrays;
-import java.util.stream.*;
+
 /**
  * Created by rstoke on 12/7/16.
  */
@@ -8,16 +7,13 @@ import java.util.stream.*;
 public class Grid {
 
     private char grid[][] = new char[7][7];
-    private int length = 6; //TODO no more magic numbers in the code, flexible
-    private int width = 7;
 
-    public Grid() {
-        this.grid = new char[7][7];
-        reset();
+    public Grid(){
+        initGrid();
     }
 
     // private method
-    public void reset() {
+    private void initGrid(){
         for(int i = 0; i < grid.length; i++){
             for(int j = 0; j < grid[i].length; j++){
                 if (i==0){
@@ -47,15 +43,9 @@ public class Grid {
         return this.grid;
     }
 
-    public void addToken(Token token, int col) throws ExceptionOutOfGrid, DrawException {
-        boolean upperLineFull = false;  //TODO for draw
-        //Arrays.stream(this.grid[0]).forEach(x -> x = Token.isTokenValue(x)? 1:0).sum() == this.width;
-
+    public void addToken(Token token, int col) throws ExceptionOutOfGrid {
         if(col <0 || col >6){
             throw new ExceptionOutOfGrid();
-        }
-        else if (upperLineFull) {       // java8
-            throw new DrawException();
         }
         else{
             for(int i = (grid.length - 1); i >= 0; i--){
@@ -72,21 +62,8 @@ public class Grid {
         }
     }
 
-    public void display() {
-        for(int i = 0; i < this.grid.length; i++){
-            for(int j = 0; j < this.grid[i].length; j++){
-                if ( (j + 1) == this.grid[i].length){
-                    System.out.println(this.grid[i][j]);
-                }
-                else{
-                    System.out.print(this.grid[i][j] +"  ");
-                }
-            }
-        }
-    }
 
-
-    //TODO maybe think better algorithm, instead of verifying whole, do it at end of every turn and raise exception,
+    //TODO maybe think better algorithm, instead of verifying whole at end of every turn,
     //maybe verify at the end of "add token" because victory linked to end of action of a player
     public boolean isNotFinished(Token token){
         int flagVictory[] = new int[8];

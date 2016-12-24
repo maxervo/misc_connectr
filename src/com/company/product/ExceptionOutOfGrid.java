@@ -3,9 +3,6 @@ package com.company.product;
 /**
  * Created by rstoke on 12/14/16.
  */
-
-//TODO change to Exception keyword as suffix, convention
-//OK considered as exceptional event, checked exception to handle
 class ExceptionOutOfGrid extends Exception {
 
     public ExceptionOutOfGrid() {
@@ -14,7 +11,7 @@ class ExceptionOutOfGrid extends Exception {
 
     public ExceptionOutOfGrid(int col) {
         this(); // call the basic constructor
-        System.out.println("and not in col " + (col + 1));  //TODO not print here, print higher up with stderr as well
+        System.out.println("and not in col " + (col + 1));
 
     }
 }
