@@ -5,7 +5,7 @@ package com.company.product;
  */
 
 //TODO change to Exception keyword as suffix, convention
-//TODO this is validating a user input, so do not use exceptions
+//OK considered as exceptional event, checked exception to handle
 class ExceptionOutOfGrid extends Exception {
 
     public ExceptionOutOfGrid() {
@@ -14,7 +14,7 @@ class ExceptionOutOfGrid extends Exception {
 
     public ExceptionOutOfGrid(int col) {
         this(); // call the basic constructor
-        System.out.println("and not in col " + (col + 1));
+        System.out.println("and not in col " + (col + 1));  //TODO not print here, print higher up with stderr as well
 
     }
 }
