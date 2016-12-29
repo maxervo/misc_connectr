@@ -41,6 +41,7 @@ public class Game{
 
     public boolean manager() {  //return value for continuing/ending game
 
+        //TODO display after the play otherwise we don't see the win token
         //Graphics
         display();
 
@@ -99,7 +100,12 @@ public class Game{
     }
 
     private void play(Player player) throws ExceptionOutOfGrid, VictoryException, DrawException {
-        this.grid.addToken(player.getToken(), player.behavior.decide());
+        int decide;
+        do {
+            decide = player.behavior.decide();
+        } while(decide == -2);
+
+        this.grid.addToken(player.getToken(), decide);
 
         if ( !this.grid.isNotFinished(player.getToken()) ) { //TODO : instead of this whole new verification, better to verify at each step -> quicker, then raise exception
             throw new VictoryException();

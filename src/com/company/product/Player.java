@@ -10,7 +10,7 @@ public class Player {
     private String name;
     private Token token;
     public Behavior behavior;   //public for syntactic sugar object.behavior.method
-                                //TODO change it in private. The control is now done by a behavior string
+
 
     public Player() {
         this.id = 0;
