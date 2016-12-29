@@ -1,4 +1,6 @@
 package com.company.behavior;
+import com.company.product.History;
+
 import java.util.Scanner;
 
 /**
@@ -21,7 +23,8 @@ public class HumanStrategy implements Behavior {
             String next = this.sc.nextLine(); // very important to save in a buffer
             if (next.equals("sortir")) {
                 System.out.println("Game ended by the player");
-                System.exit(1); // TODO bad
+                History.setEndGameStatic();
+                System.exit(0);
             } else {
                 System.err.println("Error input " + next + ". Please enter a correct one");
             }

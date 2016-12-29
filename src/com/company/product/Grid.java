@@ -8,6 +8,7 @@ import java.util.stream.*;
 public class Grid {
 
     private char grid[][] = new char[7][7];
+    // NEVER USED
     private int length = 6; //TODO no more magic numbers in the code, flexible
     private int width = 7;
 
@@ -49,12 +50,23 @@ public class Grid {
 
     public void addToken(Token token, int col) throws ExceptionOutOfGrid, DrawException {
         boolean upperLineFull = false;  //TODO for draw
+
+
         //Arrays.stream(this.grid[0]).forEach(x -> x = Token.isTokenValue(x)? 1:0).sum() == this.width;
 
         if(col <0 || col >6){
             throw new ExceptionOutOfGrid();
         }
-        else if (upperLineFull) {       // java8
+
+        int  occu = 0;
+        for (int j = 0; j < grid.length; j++) {
+            if (grid[1][j] != '.'){
+                occu++;
+            }
+        }
+
+        // else if (upperLineFull) {       // java8
+        if (occu == grid.length) {       // java swag
             throw new DrawException();
         }
         else{
@@ -134,7 +146,7 @@ public class Grid {
                     // check if somebody won
                     for (int l=0; l < flagVictory.length; l++){
                         if (flagVictory[l] == 4){
-                            return false;
+                            return true;
                         }
                     }
                 }

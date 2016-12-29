@@ -2,6 +2,7 @@ package com.company.product;
 import com.company.behavior.HumanStrategy;
 
 import java.util.*;
+import java.io.*;
 
 //TODO do java 8 change compiler
 
@@ -19,6 +20,7 @@ public class Game{
     private ListIterator<Player> playerPoolIterator;
     private List<Integer> score;
 
+    private History history;
     private int numRound = 1;
 
     // Test block
@@ -30,18 +32,23 @@ public class Game{
         //Init components
         this.grid = new Grid();
         this.menu = new Menu();
+        this.history = new History();
 
         //Create players
         this.menu.choosePlayerNames();  //TODO think about method chaining, advantages and drawbacks
         spawnPlayers(this.menu);
 
+        this.history.setPlayers(playerPool);
+        this.history.setRound();
         //Zero score
         zeroScore();
     }
 
+
     public boolean manager() {  //return value for continuing/ending game
 
-        //TODO display after the play otherwise we don't see the win token
+
+
         //Graphics
         display();
 
@@ -58,11 +65,16 @@ public class Game{
         } catch(VictoryException e) {
             int playerIndex = player.getId()-1;
 
-            System.out.println("Player" + player.getId() + " " + player.getName() + " won the game!");
-            this.score.set(playerIndex, this.score.get(playerIndex)+1);   //
+            System.out.println("Player" + player.getId() + " " + player.getName() + " won the round!");
+            this.score.set(playerIndex, this.score.get(playerIndex)+1);
+            this.history.setResultRound(player, true);
+            this.history.setScore(this.score);
+            display(); // display after the play otherwise we don't see the win token
+            checkScore(player);
             return resume();
         } catch(DrawException e) {
             System.out.println("It is a draw");
+            this.history.setResultRound(player, false);
             return resume();
         }
 
@@ -86,6 +98,17 @@ public class Game{
         }
     }
 
+    private void checkScore(Player player) {
+
+        for (int playerScore : this.score) {
+            if(playerScore > 2) { // TODO change the score required as players want
+                System.out.println(player.getName() + " won the game.");
+                this.history.setEndGame();
+                System.exit(0); // end of the game.
+            }
+        }
+    }
+
     private void display() {
         String scoreLine = "Score: ";
 
@@ -106,6 +129,7 @@ public class Game{
         } while(decide == -2);
 
         this.grid.addToken(player.getToken(), decide);
+        this.history.setPlay(player, decide);
 
         if ( !this.grid.isNotFinished(player.getToken()) ) { //TODO : instead of this whole new verification, better to verify at each step -> quicker, then raise exception
             throw new VictoryException();
@@ -143,10 +167,25 @@ public class Game{
             //reset grid
             this.grid.reset();
 
+            this.history.setRound();
+/*
+            Error with this code. numRound not good if there is more round than num player
             //reset player cursor to next one, circular
             this.playerPoolIterator = this.playerPool.listIterator();
-            for(int i = 0; i < this.numRound; i++) {
+            for(int i = 0; i < this.numRound; i++) { // numRound not good if there is more round than num player
                 this.playerPoolIterator.next();
+            }
+            this.numRound++;
+*/
+            //reset player cursor to next one, circular
+            for(int i = 0; i < this.numRound; i++) {
+                if (this.playerPoolIterator.hasNext()) {
+                    this.playerPoolIterator.next();
+                }
+                else {
+                    this.playerPoolIterator = this.playerPool.listIterator();
+                    this.playerPoolIterator.next();
+                }
             }
             this.numRound++;
 
@@ -170,3 +209,4 @@ public class Game{
         return (answer.matches(regex));
     }
 }
+

@@ -1,0 +1,7 @@
+Joueur 1 est sdv
+Joueur 2 est erfg
+Manche commence
+Joueur 1 joue 4
+Joueur 2 joue 4
+Joueur 1 joue 4
+Partie finie 
