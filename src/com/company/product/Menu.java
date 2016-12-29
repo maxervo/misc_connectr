@@ -8,27 +8,27 @@ import java.util.Scanner;
 public class Menu {
     private Scanner sc = new Scanner(System.in);
 
-    private String player1;
-    private String player2;
+    private String[] player1;
+    private String[] player2;
 
     public Menu() {
         System.out.println("Welcome to " + Main.PROGRAM_NAME);
-        this.player1 = "";
-        this.player2 = "";
+        this.player1 = new String[2];
+        this.player2 = new String[2];
     }
 
     public void choosePlayerNames() {     //TODO Rules enforced
         //Player1 input
         System.out.println("Joueur 1?");
         do {
-            this.player1 = sc.nextLine();
-        } while(!validatePlayerName(player1));
+            this.player1 = sc.nextLine().split("\\s+");
+        } while(!(validatePlayerIdentity(player1[0]) && validatePlayerName(player1[1])));
 
         //Player2 input
         System.out.println("Joueur 2?");
         do {
-            this.player2 = sc.nextLine();
-        } while(!validatePlayerName(player2));
+            this.player2 = sc.nextLine().split("\\s+");
+        } while(!(validatePlayerIdentity(player2[0]) && validatePlayerName(player2[1])));
     }
 
     /* Utilities */
@@ -49,12 +49,18 @@ public class Menu {
         return (name.matches(regex)) && (name.length() < maxLength);
     }
 
-    /* Getters */
-    public String getPlayer1() {
-        return player1;
-    }
+    private boolean validatePlayerIdentity(String identity) {
 
-    public String getPlayer2() {
+        if(!(identity.equals("human") || identity.equals("ia:monkey"))) {
+            System.err.println("Define your identity as follows: human <name> or ia:monkey <name>.");
+        }
+
+        return (identity.equals("human") || identity.equals("ia:monkey"));
+    }
+    /* Getters */
+    public String[] getPlayer1() { return player1; }
+
+    public String[] getPlayer2() {
         return player2;
     }
 }

@@ -120,8 +120,8 @@ public class Game{
 
     private void spawnPlayers(Menu menu) {
         this.playerPool = new LinkedList<Player>();
-        this.playerPool.add( new Player(1, menu.getPlayer1(), new Token('x'), new HumanStrategy()) );
-        this.playerPool.add( new Player(2, menu.getPlayer2(), new Token('o'), new HumanStrategy()) );
+        this.playerPool.add( new Player(1, menu.getPlayer1()[1], new Token('x'), menu.getPlayer1()[0]) );
+        this.playerPool.add( new Player(2, menu.getPlayer2()[1], new Token('o'), menu.getPlayer2()[0]) );
         this.playerPoolIterator = this.playerPool.listIterator();
     }
 

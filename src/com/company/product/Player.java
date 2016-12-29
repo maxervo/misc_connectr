@@ -1,7 +1,6 @@
 package com.company.product;
 
-import com.company.behavior.Behavior;
-import com.company.behavior.IAMonkeyStrategy;
+import com.company.behavior.*;
 
 /**
  * Created by rstoke on 12/7/16.
@@ -11,19 +10,20 @@ public class Player {
     private String name;
     private Token token;
     public Behavior behavior;   //public for syntactic sugar object.behavior.method
+                                //TODO change it in private. The control is now done by a behavior string
 
     public Player() {
         this.id = 0;
         this.name = "";
         this.token = new Token();
-        this.behavior = new IAMonkeyStrategy();
+        this.behavior = new HumanStrategy();
     }
 
-    public Player(int id, String name, Token token, Behavior behavior) {
+    public Player(int id, String name, Token token, String behavior) {
         this.id = id;
         this.name = name;
         this.token = token;
-        this.behavior = behavior;
+        setBehavior(behavior);
     }
 
     public int getId() {
@@ -54,8 +54,13 @@ public class Player {
         this.token = token;
     }
 
-    public void setBehavior(Behavior behavior) {
-        this.behavior = behavior;
+    public void setBehavior(String behavior) {
+        if(behavior.equals("human")) {
+            this.behavior = new HumanStrategy();
+        }
+        else if (behavior.equals("ia:monkey")) {
+            this.behavior = new IAMonkeyStrategy();
+        }
     }
 }
 
