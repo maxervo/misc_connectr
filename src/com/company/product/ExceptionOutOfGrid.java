@@ -9,7 +9,7 @@ package com.company.product;
 class ExceptionOutOfGrid extends Exception {
 
     public ExceptionOutOfGrid() {
-        System.out.println("Out of grid. Please set your token between 1 and 7");
+        System.out.println("Out of grid. Please set your token inside the grid");
     }
 
     public ExceptionOutOfGrid(int col) {

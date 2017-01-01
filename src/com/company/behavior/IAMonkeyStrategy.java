@@ -1,5 +1,7 @@
 package com.company.behavior;
 
+import com.company.ui.UI;
+
 /**
  * Created by rstoke on 12/7/16.
  */
@@ -10,8 +12,8 @@ public class IAMonkeyStrategy implements Behavior {
     }
 
     @Override
-    public int decide() {
-        return ((int) (Math.random() * (7 - 1 + 1)) + 1);
+    public String decide(UI ui) {
+        return (Double.toString(Math.random() * (7 - 1 + 1)) + 1);
     }
 
 }

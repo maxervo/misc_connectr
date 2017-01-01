@@ -1,29 +1,32 @@
 package com.company.product;
 import com.company.behavior.HumanStrategy;
+import com.company.ui.CLI;
+import com.company.ui.UI;
+import com.company.ui.GUI;
 
 import java.util.*;
-
-//TODO do java 8 change compiler
 
 /**
  * Created by rstoke on 12/7/16.
  */
 
 public class Game{
-    private Scanner sc = new Scanner(System.in);
+    private static final String RUNNING_STATE = "running";
+    private static final String PAUSE_STATE = "pause";
+    public static final String RESUME_CMD = "resume";
+    public static final String QUIT_CMD = "quit";
 
     private Grid grid;
     private Menu menu;
+    private UI ui;
 
     private List<Player> playerPool;    //circular list to hold player pool
     private ListIterator<Player> playerPoolIterator;
     private List<Integer> score;
 
-    private int numRound = 1;
-
-    // Test block
-    // to use different behavior during the game
-    //private int testNbTurn = 0;
+    private int maxNumRounds = 3;   //TODO do an interface to set this? how will it integrate with CLI terminal with rules of teacher?
+    private int numRound;
+    private String state;
 
     public Game() {
 
@@ -32,49 +35,47 @@ public class Game{
         this.menu = new Menu();
 
         //Create players
-        this.menu.choosePlayerNames();  //TODO think about method chaining, advantages and drawbacks
+        this.menu.choosePlayerNames();
         spawnPlayers(this.menu);
 
-        //Zero score
+        //Misc
         zeroScore();
+        this.numRound = 1;
+        this.state = RUNNING_STATE;
+
+        //Init UI
+        this.ui = new CLI(grid, score);     //TODO how does teacher want to switch GUI/CLI in UI terminal?
+        //this.ui = new GUI(grid, score);
     }
 
     public boolean manager() {  //return value for continuing/ending game
 
-        //Graphics
-        display();
+        //Overall end
+        if(this.numRound > this.maxNumRounds) {
+            this.ui.statusEnd(score);
+            return false;   //end game
+        }
 
         //Current player turn
-        Player player = electPlayer();
-        System.out.println("Turn: " + player.getName());
+        Player player = electNextPlayer();
 
         //Playing
         try {
-            play(player);
+            return play(player);    //keep playing, or quits based on decision
         } catch(ExceptionOutOfGrid e) {
-            playerPoolIterator.previous();  //loop with same player
-            return true;
+            this.playerPoolIterator.previous();  //loop with same player
+            this.ui.statusOutOfGrid(this.score);
         } catch(VictoryException e) {
             int playerIndex = player.getId()-1;
-
-            System.out.println("Player" + player.getId() + " " + player.getName() + " won the game!");
-            this.score.set(playerIndex, this.score.get(playerIndex)+1);   //
-            return resume();
+            this.score.set(playerIndex, this.score.get(playerIndex)+1); //gain points
+            this.state = PAUSE_STATE;
+            this.ui.statusVictory(this.score);
         } catch(DrawException e) {
-            System.out.println("It is a draw");
-            return resume();
+            this.state = PAUSE_STATE;
+            this.ui.statusDraw(this.score);
         }
 
-        return true;   //keep playing while no VictoryException
-
-        //Test block
-        /*
-        testNbTurn++;
-        if(testNbTurn == 3){
-            playerPoolIterator.previous().setBehavior(new IAMonkeyStrategy());
-        }*/
-
-
+        return true;   //keep playing
     }
 
     private void zeroScore() {
@@ -85,30 +86,56 @@ public class Game{
         }
     }
 
-    private void display() {
-        String scoreLine = "Score: ";
+    private boolean play(Player player) throws ExceptionOutOfGrid, VictoryException, DrawException {
+        String decision = player.behavior.decide(this.ui);
 
-        //Display grid
-        this.grid.display();
-
-        //Display score
-        for (int playerScore : this.score) {
-            scoreLine +=  playerScore + "/" ;
+        //Not decided
+        if(decision.equals(UI.NO_DECISION_YET)) {
+            this.playerPoolIterator.previous();  //loop with same player
         }
-        System.out.println(scoreLine);
+
+        //Resume
+        else if(this.state.equals(this.PAUSE_STATE) && decision.equals(this.RESUME_CMD)) {
+            resume();   //prepare next round
+            this.ui.statusNewGame(score);
+            this.ui.displayGrid(this.grid);
+        }
+
+        //Quit
+        else if(decision.equals(this.QUIT_CMD)) {
+            this.ui.statusEnd(score);
+            return false; //quit game
+        }
+
+        //Token
+        else if(this.state.equals(this.RUNNING_STATE)) {
+            try {
+                this.grid.addToken(player.getToken(), Integer.parseInt(decision));
+                this.ui.displayGrid(this.grid);     //Graphics when change, due to slow reload of JFrame
+                this.ui.statusPlayerTurn(player.getName(), score);
+            }
+            catch (NumberFormatException e) {
+                this.playerPoolIterator.previous();  //loop with same player
+                this.ui.statusFormatInput(score);
+            }
+
+            //TODO tmp
+            if ( !this.grid.isNotFinished(player.getToken()) ) { //TODO : instead of this whole new verification, better to verify at each step -> quicker, then raise exception
+                throw new VictoryException();
+            }
+        }
+
+        //Request correct input
+        else {
+            this.ui.statusFormatInput(score);
+        }
+
+        return true;
     }
 
-    private void play(Player player) throws ExceptionOutOfGrid, VictoryException, DrawException {
-        this.grid.addToken(player.getToken(), player.behavior.decide());
+    private Player electNextPlayer() {
 
-        if ( !this.grid.isNotFinished(player.getToken()) ) { //TODO : instead of this whole new verification, better to verify at each step -> quicker, then raise exception
-            throw new VictoryException();
-        }
-    }
-
-    private Player electPlayer() {
-
-        //Circular turn based for switching players
+        //Circular turn based for switching between multiple players
         if (this.playerPoolIterator.hasNext()) {
             return this.playerPoolIterator.next();
         }
@@ -125,42 +152,16 @@ public class Game{
         this.playerPoolIterator = this.playerPool.listIterator();
     }
 
-    private boolean resume() {
-        String answer = "";
+    private void resume() {
+        this.grid.reset();
 
-        System.out.println("Do you want to play again? (y/n)");
-        do {
-            answer = sc.nextLine();
-        } while(!validateResumeAnswer(answer));
-
-        if(answer.equals("y")) {
-            //reset grid
-            this.grid.reset();
-
-            //reset player cursor to next one, circular
-            this.playerPoolIterator = this.playerPool.listIterator();
-            for(int i = 0; i < this.numRound; i++) {
-                this.playerPoolIterator.next();
-            }
-            this.numRound++;
-
-            return true;
+        //reset player cursor to next one, circular
+        this.playerPoolIterator = this.playerPool.listIterator();   //reset iterator
+        for(int i = 0; i < this.numRound; i++) {    //multiple players loop
+            electNextPlayer();
         }
+        this.numRound++;
 
-        return false;
-    }
-
-    /* Utilities */
-    private boolean validateResumeAnswer(String answer) {
-        //Rules
-        String regex = "^[yn]$";
-
-        //Process
-        if(!answer.matches(regex)) {
-            System.err.println("Answer y or n");
-        }
-
-        //Synthesis
-        return (answer.matches(regex));
+        this.state = RUNNING_STATE; //resume
     }
 }

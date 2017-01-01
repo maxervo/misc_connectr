@@ -17,7 +17,7 @@ public class Menu {
         this.player2 = "";
     }
 
-    public void choosePlayerNames() {     //TODO Rules enforced
+    public void choosePlayerNames() {
         //Player1 input
         System.out.println("Joueur 1?");
         do {
@@ -32,12 +32,12 @@ public class Menu {
     }
 
     /* Utilities */
-    private boolean validatePlayerName(String name) {   //TODO maybe find design pattern, factory to design model unique place..etc
+    private boolean validatePlayerName(String name) {
         //Rules
         String regex = "^[a-zA-Z ]+$";   //only letters or space
         int maxLength = 20;
 
-        //Process                               //TODO find one day a validator standard library
+        //Process                               //possible to use a standard library validator
         if(!name.matches(regex)) {
             System.err.println("Only letters or space allowed, please try again.");
         }

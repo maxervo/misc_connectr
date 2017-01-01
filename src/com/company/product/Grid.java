@@ -1,6 +1,5 @@
 package com.company.product;
-import java.util.Arrays;
-import java.util.stream.*;
+
 /**
  * Created by rstoke on 12/7/16.
  */
@@ -8,7 +7,7 @@ import java.util.stream.*;
 public class Grid {
 
     private char grid[][] = new char[7][7];
-    private int length = 6; //TODO no more magic numbers in the code, flexible
+    private int height = 6; //TODO no more magic numbers in the code, flexible
     private int width = 7;
 
     public Grid() {
@@ -21,7 +20,7 @@ public class Grid {
         for(int i = 0; i < grid.length; i++){
             for(int j = 0; j < grid[i].length; j++){
                 if (i==0){
-                    this.grid[i][j] = (char)(j + 1 + '0');
+                    this.grid[i][j] = (char)(j + '0');
                 }else{
                     this.grid[i][j] = '.';
                 }
@@ -71,20 +70,6 @@ public class Grid {
             }
         }
     }
-
-    public void display() {
-        for(int i = 0; i < this.grid.length; i++){
-            for(int j = 0; j < this.grid[i].length; j++){
-                if ( (j + 1) == this.grid[i].length){
-                    System.out.println(this.grid[i][j]);
-                }
-                else{
-                    System.out.print(this.grid[i][j] +"  ");
-                }
-            }
-        }
-    }
-
 
     //TODO maybe think better algorithm, instead of verifying whole, do it at end of every turn and raise exception,
     //maybe verify at the end of "add token" because victory linked to end of action of a player
@@ -143,4 +128,11 @@ public class Grid {
         return true;
     }
 
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
 }

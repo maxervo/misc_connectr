@@ -24,7 +24,7 @@ public class Token {
         if (token == 'x' || token == 'o' || token == Character.MIN_VALUE){  //empty character
             this.token = token;
         }
-        /*else{
+        /*else{     //TODO whassup
             throw new ExceptionToken();
         }*/
     }
