@@ -21,9 +21,19 @@ public class CLI extends UI {
     public void displayGrid(Grid grid) {
         char[][] dataGrid = grid.getGrid();
 
-        for(int i = 0; i < dataGrid.length; i++){
-            for(int j = 0; j < dataGrid[i].length; j++){
-                if ( (j + 1) == dataGrid[i].length){
+        for(int k = 1; k <= grid.getWidth(); k++){
+            if (k<10) {
+                System.out.print(Integer.toString(k) + "  ");
+            }
+            else{
+                System.out.print(Integer.toString(k) + " ");
+            }
+        }
+        System.out.println();
+
+        for(int i = 0; i < grid.getHeight(); i++){
+            for(int j = 0; j < grid.getWidth(); j++){
+                if ( (j + 1) == grid.getWidth()){
                     System.out.println(dataGrid[i][j]);
                 }
                 else{

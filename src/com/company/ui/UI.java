@@ -14,7 +14,11 @@ public abstract class UI {      //No need of strategy pattern because no need fo
     public final static String MSG_OUT_OF_GRID = "Token out of grid. Please position the token inside.";
     public final static String MSG_VICTORY = "Congratulations you won! Do you want to continue? " + MSG_ALTERNATIVE;
     public final static String MSG_DRAW = "It was a draw! Do you want to continue? " + MSG_ALTERNATIVE;
-    public final static String MSG_NEW_GAME = "A new game has started!";
+    public final static String MSG_NEW_GAME = "A new game has started!"; //TODO better to say round than game
+
+    //History
+    public final static String MSG_NEW_ROUND = "Manche Commence";
+    //END History
 
     public abstract void displayGrid(Grid grid);
     protected abstract void displayStatus(String statusMsg, List<Integer> score);
@@ -55,4 +59,13 @@ public abstract class UI {      //No need of strategy pattern because no need fo
     public void statusFormatInput(List<Integer> score) {
         displayStatus("Non valid input in this current game state. Please enter a correct position, or a correct command.", score);
     }
+
+    //History
+    public void statusNewRound(List<Integer> score) {
+        displayStatus(UI.MSG_NEW_ROUND, score);
+    }
+
+    //END History
+
+
 }

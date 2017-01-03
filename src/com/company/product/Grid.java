@@ -6,30 +6,30 @@ package com.company.product;
 
 public class Grid {
 
-    private char grid[][] = new char[7][7];
-    private int height = 6; //TODO no more magic numbers in the code, flexible
-    private int width = 7;
+    private char grid[][];
+    private int height = 5; //TODO no more magic numbers in the code, flexible
+    private int width = 5;
 
     public Grid() {
-        this.grid = new char[7][7];
+        this.grid = new char[this.height][this.width];
         reset();
     }
 
     // private method
     public void reset() {
-        for(int i = 0; i < grid.length; i++){
-            for(int j = 0; j < grid[i].length; j++){
-                if (i==0){
-                    this.grid[i][j] = (char)(j + '0');
-                }else{
+        for(int i = 0; i < this.height; i++){
+            for(int j = 0; j < this.width; j++){
+                //if (i==0){
+                  //  this.grid[i][j] = (char)(j + '0');
+                //}else{
                     this.grid[i][j] = '.';
-                }
+                //}
             }
         }
     }
 
-    private boolean isInGrid(int i, int j){// the first lign cannot contain a token
-        if (i<(grid.length) && j<grid[0].length && i>0 && j>-1){
+    private boolean isInGrid(int i, int j){// the first line cannot contain a token
+        if ( i<this.height && j<this.width && i>=0 && j>=0){
             return true;
         }
         return false;
@@ -41,25 +41,40 @@ public class Grid {
         return false;
     }
 
+    private boolean upperLineFull(){
+        int  occu = 0;
+        for (int j = 0; j < this.width; j++) {
+            if (grid[0][j] != '.'){
+                occu++;
+            }
+        }
+
+        if (occu == this.width) {
+            return true;
+        }
+        return false;
+    }
+
+
     // public method
     public char[][] getGrid(){
         return this.grid;
     }
 
     public void addToken(Token token, int col) throws ExceptionOutOfGrid, DrawException {
-        boolean upperLineFull = false;  //TODO for draw
+        //boolean upperLineFull = false;  //TODO for draw
         //Arrays.stream(this.grid[0]).forEach(x -> x = Token.isTokenValue(x)? 1:0).sum() == this.width;
 
-        if(col <0 || col >6){
+        if(col <=0 || col>=this.width){
             throw new ExceptionOutOfGrid();
         }
-        else if (upperLineFull) {       // java8
+        else if (upperLineFull()) {
             throw new DrawException();
         }
         else{
-            for(int i = (grid.length - 1); i >= 0; i--){
-                if (grid[i][col] == '.'){
-                    grid[i][col] = token.getToken();
+            for(int i = (this.height - 1); i >= 0; i--){
+                if (this.grid[i][col] == '.'){
+                    this.grid[i][col] = token.getToken();
                     break;
                 }
                 else{
@@ -76,9 +91,9 @@ public class Grid {
     public boolean isNotFinished(Token token){
         int flagVictory[] = new int[8];
 
-        for (int i =1; i< grid.length; i++){
-            for(int j = 0; j < grid[0].length; j++){
-                if (grid[i][j] != '.'){ // we check the grid just for a good token
+        for (int i =1; i< this.height; i++){
+            for(int j = 0; j < this.width; j++){
+                if (this.grid[i][j] != '.'){ // we check the grid just for a good token
                     //Arrays.fill(flagVictory, null);
                     flagVictory = new int[flagVictory.length];
 
