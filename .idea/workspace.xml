@@ -2,39 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="000f7203-71fb-4dd6-a495-a4adfd6125ab" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/behavior/IAMonkeyStrategy.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/product/Game.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/product/Menu.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/product/Token.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/behavior/HumanStrategy.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/behavior/HumanStrategy.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/behavior/IAMonkeyStrategy.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/behavior/IAMonkeyStrategy.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/product/ColumnFullException.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/product/ColumnFullException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/product/DrawException.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/product/DrawException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/product/Grid.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/product/Grid.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/product/History.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/product/History.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/product/Main.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/product/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/product/OutOfGridException.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/product/OutOfGridException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/product/Player.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/product/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/product/VictoryException.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/product/VictoryException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/ui/CLI.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/ui/CLI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/ui/GUI.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/ui/GUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/ui/UI.class" afterPath="$PROJECT_DIR$/out/production/connectr/com/company/ui/UI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/connectr/com/company/ui/GUI.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.txt" afterPath="$PROJECT_DIR$/log.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/behavior/Behavior.java" afterPath="$PROJECT_DIR$/src/com/company/behavior/Behavior.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/behavior/HumanStrategy.java" afterPath="$PROJECT_DIR$/src/com/company/behavior/HumanStrategy.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/behavior/IAMonkeyStrategy.java" afterPath="$PROJECT_DIR$/src/com/company/behavior/IAMonkeyStrategy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/ColumnFullException.java" afterPath="$PROJECT_DIR$/src/com/company/product/ColumnFullException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/DrawException.java" afterPath="$PROJECT_DIR$/src/com/company/product/DrawException.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/Game.java" afterPath="$PROJECT_DIR$/src/com/company/product/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/Grid.java" afterPath="$PROJECT_DIR$/src/com/company/product/Grid.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/History.java" afterPath="$PROJECT_DIR$/src/com/company/product/History.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/Main.java" afterPath="$PROJECT_DIR$/src/com/company/product/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/Menu.java" afterPath="$PROJECT_DIR$/src/com/company/product/Menu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/OutOfGridException.java" afterPath="$PROJECT_DIR$/src/com/company/product/OutOfGridException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/Player.java" afterPath="$PROJECT_DIR$/src/com/company/product/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/Token.java" afterPath="$PROJECT_DIR$/src/com/company/product/Token.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/VictoryException.java" afterPath="$PROJECT_DIR$/src/com/company/product/VictoryException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/ui/CLI.java" afterPath="$PROJECT_DIR$/src/com/company/ui/CLI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/ui/GUI.java" afterPath="$PROJECT_DIR$/src/com/company/ui/GUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/ui/UI.java" afterPath="$PROJECT_DIR$/src/com/company/ui/UI.java" />
     </list>
@@ -60,8 +33,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/product/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-340">
-              <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="53" />
+            <state relative-caret-position="134">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -70,47 +43,18 @@
       <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/product/Menu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1296">
+            <state relative-caret-position="779">
               <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
-              <folding>
-                <element signature="e#2523#2524#0" expanded="true" />
-                <element signature="e#2556#2557#0" expanded="true" />
-                <element signature="e#2595#2596#0" expanded="true" />
-                <element signature="e#2628#2629#0" expanded="true" />
-                <element signature="e#2671#2672#0" expanded="true" />
-                <element signature="e#2708#2709#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Grid.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/product/Grid.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="History.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/product/History.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/product/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+            <state relative-caret-position="3591">
+              <caret line="133" column="23" selection-start-line="133" selection-start-column="23" selection-end-line="133" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -118,12 +62,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OutOfGridException.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/product/OutOfGridException.java">
+      <file leaf-file-name="IAMonkeyStrategy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/behavior/IAMonkeyStrategy.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-              <folding />
+            <state relative-caret-position="486">
+              <caret line="18" column="95" selection-start-line="18" selection-start-column="95" selection-end-line="18" selection-end-column="95" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#213#214#0" expanded="true" />
+                <element signature="e#296#297#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,20 +79,8 @@
       <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/ui/UI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2361">
-              <caret line="95" column="5" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/product/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-74">
-              <caret line="15" column="67" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="67" />
+            <state relative-caret-position="648">
+              <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,11 +98,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GUI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HumanStrategy.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/behavior/HumanStrategy.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/ui/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3387">
+            <state relative-caret-position="-701">
               <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NumberFormatException.class" pinned="false" current-in-tab="false">
+        <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/lang/NumberFormatException.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CLI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/ui/CLI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-506">
+              <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -245,17 +213,17 @@
         <option value="$PROJECT_DIR$/src/com/company/product/DrawException.java" />
         <option value="$PROJECT_DIR$/src/com/company/product/ColumnFullException.java" />
         <option value="$PROJECT_DIR$/src/com/company/behavior/HumanStrategy.java" />
-        <option value="$PROJECT_DIR$/src/com/company/behavior/IAMonkeyStrategy.java" />
         <option value="$PROJECT_DIR$/src/com/company/product/Player.java" />
         <option value="$PROJECT_DIR$/src/com/company/product/History.java" />
-        <option value="$PROJECT_DIR$/src/com/company/ui/GUI.java" />
         <option value="$PROJECT_DIR$/src/com/company/ui/CLI.java" />
         <option value="$PROJECT_DIR$/src/com/company/product/Main.java" />
         <option value="$PROJECT_DIR$/src/com/company/behavior/Behavior.java" />
         <option value="$PROJECT_DIR$/src/com/company/product/Human.java" />
         <option value="$PROJECT_DIR$/src/com/company/product/Token.java" />
-        <option value="$PROJECT_DIR$/src/com/company/ui/UI.java" />
         <option value="$PROJECT_DIR$/src/com/company/product/Menu.java" />
+        <option value="$PROJECT_DIR$/src/com/company/ui/UI.java" />
+        <option value="$PROJECT_DIR$/src/com/company/ui/GUI.java" />
+        <option value="$PROJECT_DIR$/src/com/company/behavior/IAMonkeyStrategy.java" />
         <option value="$PROJECT_DIR$/src/com/company/product/Game.java" />
       </list>
     </option>
@@ -654,7 +622,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37041157" sideWeight="0.8570331" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20260416" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20052083" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -699,7 +667,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/company/product/Token.java" />
     <entry file="file://$PROJECT_DIR$/src/com/company/product/Grid.java" />
     <entry file="file://$PROJECT_DIR$/src/com/company/product/ExceptionToken.java" />
     <entry file="file://$PROJECT_DIR$/src/com/company/behavior/Behavior.java" />
@@ -778,26 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/behavior/IAMonkeyStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#213#214#0" expanded="true" />
-            <element signature="e#296#297#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/behavior/HumanStrategy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/product/Human.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -814,31 +761,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/ui/CLI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/behavior/Behavior.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/ui/UI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2361">
-          <caret line="95" column="5" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -850,9 +777,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/product/History.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/product/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="15" column="67" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/product/OutOfGridException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
+          <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/product/History.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -860,41 +805,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/product/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/ui/UI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-340">
-          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/product/Menu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+        <state relative-caret-position="648">
+          <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
           <folding>
-            <element signature="e#2523#2524#0" expanded="true" />
-            <element signature="e#2556#2557#0" expanded="true" />
-            <element signature="e#2595#2596#0" expanded="true" />
-            <element signature="e#2628#2629#0" expanded="true" />
-            <element signature="e#2671#2672#0" expanded="true" />
-            <element signature="e#2708#2709#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/product/OutOfGridException.java">
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/lang/NumberFormatException.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        <state relative-caret-position="289">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/product/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/ui/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-74">
-          <caret line="15" column="67" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="67" />
+        <state relative-caret-position="-701">
+          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -909,20 +841,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/product/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/behavior/HumanStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="53" column="10" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+        <state relative-caret-position="108">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/behavior/IAMonkeyStrategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="18" column="95" selection-start-line="18" selection-start-column="95" selection-end-line="18" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#213#214#0" expanded="true" />
+            <element signature="e#296#297#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/ui/CLI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-506">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/ui/GUI.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/product/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3387">
-          <caret line="15" column="47" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+        <state relative-caret-position="779">
+          <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/product/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/product/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3591">
+          <caret line="133" column="23" selection-start-line="133" selection-start-column="23" selection-end-line="133" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

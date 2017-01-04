@@ -12,8 +12,8 @@ import java.util.stream.IntStream;
 import javax.swing.*;
 
 public class GUI extends UI {
-    public static final int FRAME_WIDTH = 600;
-    public static final int FRAME_HEIGHT = 400;
+    public static final int FRAME_WIDTH = 800;
+    public static final int FRAME_HEIGHT = 600;
 
     private JFrame mainFrame;
     private JPanel statusPanel;   //included inside JFrame
@@ -70,11 +70,11 @@ public class GUI extends UI {
         gridInside.setLayout(new GridLayout(height,width));
 
         //Fill
-        IntStream.range(0, height).forEach(i ->{    //Java8 Lambda Functional loop, new feature v8
+        IntStream.range(0, height).forEach(i ->{    //Java8 Lambda, Functional loop, new feature v8
             IntStream.range(0, width).forEach(j ->{
                 JButton square = new JButton();
                 setGraphics(square, dataGrid[i][j]);    //set icon
-                square.addActionListener(e -> actionPlay(i, j, grid));  //lambda function, new feature v8
+                square.addActionListener(e -> actionPlay(i, j, grid));  //lambda function
                 gridInside.add(square);
             });
         });
@@ -96,7 +96,7 @@ public class GUI extends UI {
             scoreLine +=  playerScore + "/" ;
         }
         JLabel scoreLabel = new JLabel(scoreLine, JLabel.CENTER);
-        scoreLabel.setAlignmentX(Component.LEFT_ALIGNMENT);     //TODO why align not working
+        scoreLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
         this.statusPanel.add(scoreLabel);
 
         //Build component : msg
@@ -123,7 +123,7 @@ public class GUI extends UI {
         this.statusPanel.repaint();
     }
 
-    private void setGraphics(JButton square, char tokenValue) {     //TODO: if you do a token class ("higher level"), you have to stay "high level" throughout the program so use Token everywhere, so grid not char but tokens, then you do all operations with token methods, the "lower level" is managed in Token class, thus you need to stay consistent, here tmp val until you take decision to make it higher level and make consistent your code
+    private void setGraphics(JButton square, char tokenValue) {
         String imagePath = "/images/";
         switch(tokenValue) {
             case '.':
@@ -135,8 +135,6 @@ public class GUI extends UI {
             case 'o':
                 imagePath += "blue.png";
                 break;
-            default:    //TODO tmp
-                break;
         }
 
         URL tokenImg = getClass().getResource(imagePath);
@@ -147,7 +145,7 @@ public class GUI extends UI {
         char[][] dataGrid = grid.getGrid();
 
         if(dataGrid[i][j] == '.') { //Otherwise token positioned on taken position
-            this.decision = Integer.toString(j);
+            this.decision = Integer.toString(j+1);
         }
     }
 

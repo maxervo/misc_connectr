@@ -11,7 +11,7 @@ import java.util.*;
 public class Game{
     private static final String RUNNING_STATE = "running";      //keeping game loop flow for GUI
     private static final String PAUSE_STATE = "pause";
-    public static final String RESUME_CMD = "resume";
+    public static final String RESUME_CMD = "resumer";
     public static final String QUIT_CMD = "sortir";         //specified in scope statement
 
     private Grid grid;
@@ -51,8 +51,8 @@ public class Game{
         this.state = RUNNING_STATE;
 
         //Init UI
-        //this.ui = new CLI(grid, score);             //CLI terminal query possible, scope statement definition needed to choose between UIs
-        this.ui = new GUI(grid, score);
+        this.ui = new CLI(grid, score);             //CLI terminal query possible, scope statement definition needed to choose between UIs
+        //this.ui = new GUI(grid, score);
         this.ui.statusGamesPlayers(this.playerPool);
     }
 
@@ -72,12 +72,10 @@ public class Game{
             return play(player);    //keep playing, or quits based on decision
         } catch(OutOfGridException e) {
             this.playerPoolIterator.previous();  //loop with same player
-            this.ui.statusOutOfGrid(this.score);
         } catch(ColumnFullException e) {
             this.playerPoolIterator.previous();  //loop with same player
         } catch(VictoryException e) {
-            int playerIndex = player.getId()-1;
-            this.score.set(playerIndex, this.score.get(playerIndex)+1); //gain points
+            this.score.set(player.getId()-1, this.score.get(player.getId()-1)+1); //gain points
             this.state = PAUSE_STATE;
             this.ui.statusVictory(player.getId(), this.score);
         } catch(DrawException e) {
@@ -97,15 +95,18 @@ public class Game{
     }
 
     private boolean play(Player player) throws OutOfGridException, ColumnFullException, VictoryException, DrawException {
-        String decision = player.behavior.decide(this.ui);
+        String decision = UI.NO_DECISION_YET;
+        if (this.state.equals(this.RUNNING_STATE)) {
+            decision = player.behavior.decide(this.ui);
+        }
 
         //Not decided
-        if(decision.equals(UI.NO_DECISION_YET)) {
+        if(this.state.equals(this.RUNNING_STATE) && decision.equals(UI.NO_DECISION_YET)) {
             this.playerPoolIterator.previous();  //loop with same player
         }
 
         //Resume
-        else if(this.state.equals(this.PAUSE_STATE) && decision.equals(this.RESUME_CMD)) {
+        else if(this.state.equals(this.PAUSE_STATE)) {  //&& decision.equals(this.RESUME_CMD) : scope statement does not specifies if new round started automatically
             resume();   //prepare next round
             this.ui.statusNewRound(score);
             this.ui.displayGrid(this.grid);
@@ -119,8 +120,8 @@ public class Game{
 
         //Token
         else if(this.state.equals(this.RUNNING_STATE)) {
-            int positionDecided = Integer.parseInt(decision)-1; //adapt to zero based arrays
             try {
+                int positionDecided = Integer.parseInt(decision)-1; //adapt to zero based arrays
                 this.grid.addToken(player.getToken(), positionDecided);
                 this.ui.displayGrid(this.grid);     //Graphics refresh when grid change: keeping the game loop flow and limiting the slow reload of JFrame
                 this.ui.statusPlayerTurn(player.getName(), player.getId(), positionDecided,  score);

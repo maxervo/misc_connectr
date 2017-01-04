@@ -12,7 +12,6 @@ public abstract class UI {      //No need: strategy pattern because no need for 
     //Hardcoded UI Major Messages
     public final static String NO_DECISION_YET = "";
     public final static String MSG_ALTERNATIVE = "(" + Game.RESUME_CMD + "/" + Game.QUIT_CMD + ")";
-    public final static String MSG_OUT_OF_GRID = "Token out of grid. Please position the token inside.";
     public final static String MSG_VICTORY = "Congratulations you won! Do you want to continue? " + MSG_ALTERNATIVE;
     public final static String MSG_DRAW = "It was a draw! Do you want to continue? " + MSG_ALTERNATIVE;
     public final static String MSG_NEW_ROUND = "A new round has started!";
@@ -30,10 +29,6 @@ public abstract class UI {      //No need: strategy pattern because no need for 
     public abstract String requestDecision();
 
     //output
-    public void statusOutOfGrid(List<Integer> score) {
-        displayStatus(UI.MSG_OUT_OF_GRID, score);
-    }
-
     public void statusVictory(int id, List<Integer> score) {
         displayStatus(UI.MSG_VICTORY, score);
         this.history.save("Joueur 1 " + id + " gagne");
