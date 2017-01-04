@@ -1,19 +1,18 @@
 package com.company.product;
+import com.company.behavior.Behavior;
 import com.company.behavior.HumanStrategy;
+import com.company.behavior.IAMonkeyStrategy;
 import com.company.ui.CLI;
+import com.company.ui.GUI;
 import com.company.ui.UI;
 
 import java.util.*;
 
-/**
- * Created by rstoke on 12/7/16.
- */
-
 public class Game{
-    private static final String RUNNING_STATE = "running";
+    private static final String RUNNING_STATE = "running";      //keeping game loop flow for GUI
     private static final String PAUSE_STATE = "pause";
     public static final String RESUME_CMD = "resume";
-    public static final String QUIT_CMD = "quit";
+    public static final String QUIT_CMD = "sortir";         //specified in scope statement
 
     private Grid grid;
     private Menu menu;
@@ -23,20 +22,27 @@ public class Game{
     private ListIterator<Player> playerPoolIterator;
     private List<Integer> score;
 
-    private int maxNumRounds = 3;   //TODO do an interface to set this? how will it integrate with CLI terminal with rules of teacher?
+    private int maxNumRounds;
+    private int numPlayers;
     private int numRound;
     private String state;
 
     public Game() {
+        //Parameters
+        this.maxNumRounds = 3;  //CLI terminal query possible to adapt number of rounds/players, scope statement definition needed
+        this.numPlayers = 2;
 
         //Init components
-        //this.grid = new Grid(); // TODO choice
-        this.grid = new Grid(9,8);
+        this.grid = new Grid(9,8);  //CLI terminal query possible to adapt grid dimensions, scope statement definition needed
 
-        this.menu = new Menu();
+        //Prepare token set for number of player generalized
+        Token.defineTokenSet(numPlayers);
+
+        //Prompt user
+        this.menu = new Menu(numPlayers);
 
         //Create players
-        this.menu.choosePlayerNames();
+        this.menu.getValidatedInputs();
         spawnPlayers(this.menu);
 
         //Misc
@@ -45,8 +51,8 @@ public class Game{
         this.state = RUNNING_STATE;
 
         //Init UI
-        this.ui = new CLI(grid, score);     //TODO how does teacher want to switch GUI/CLI in UI terminal?
-        //this.ui = new GUI(grid, score);
+        //this.ui = new CLI(grid, score);             //CLI terminal query possible, scope statement definition needed to choose between UIs
+        this.ui = new GUI(grid, score);
         this.ui.statusGamesPlayers(this.playerPool);
     }
 
@@ -113,18 +119,19 @@ public class Game{
 
         //Token
         else if(this.state.equals(this.RUNNING_STATE)) {
+            int positionDecided = Integer.parseInt(decision)-1; //adapt to zero based arrays
             try {
-                this.grid.addToken(player.getToken(), Integer.parseInt(decision));
-                this.ui.displayGrid(this.grid);     //Graphics when change, due to slow reload of JFrame
-                this.ui.statusPlayerTurn(player.getName(), player.getId(), Integer.parseInt(decision),  score);
+                this.grid.addToken(player.getToken(), positionDecided);
+                this.ui.displayGrid(this.grid);     //Graphics refresh when grid change: keeping the game loop flow and limiting the slow reload of JFrame
+                this.ui.statusPlayerTurn(player.getName(), player.getId(), positionDecided,  score);
             }
             catch (NumberFormatException e) {
                 this.playerPoolIterator.previous();  //loop with same player
                 this.ui.statusFormatInput(player.getId(), score);
             }
 
-            //TODO tmp
-            if ( !this.grid.isNotFinished(player.getToken()) ) { //TODO : instead of this whole new verification, better to verify at each step -> quicker, then raise exception
+            //Verifying
+            if ( this.grid.isFinished(player.getToken()) ) {
                 throw new VictoryException();
             }
         }
@@ -150,10 +157,26 @@ public class Game{
     }
 
     private void spawnPlayers(Menu menu) {
+        Behavior playerBehaviorDefined;
+        String[] playerBehavior = menu.getPlayerBehavior();
+        String[] playerName = menu.getPlayerName();
+
+        //Player pool list holding all players (view it as circular)
         this.playerPool = new LinkedList<Player>();
-        this.playerPool.add( new Player(1, menu.getPlayer1(), new Token('x'), new HumanStrategy()) );
-        this.playerPool.add( new Player(2, menu.getPlayer2(), new Token('o'), new HumanStrategy()) );
+
+        for(int i=0; i < menu.getNumPlayers(); i++) {
+            //Getting behaviors
+            if(playerBehavior[i].equals("human")) {
+                playerBehaviorDefined = new HumanStrategy();
+            }
+            else {
+                playerBehaviorDefined = new IAMonkeyStrategy(this.grid);    //default behavior otherwise
+            }
+
+            this.playerPool.add( new Player(i+1, playerName[i], new Token(Token.getTokenValueFromSet(i)), playerBehaviorDefined));
+        }
         this.playerPoolIterator = this.playerPool.listIterator();
+
     }
 
     private void resume() {
@@ -166,6 +189,10 @@ public class Game{
         }
         this.numRound++;
 
-        this.state = RUNNING_STATE; //resume
+        this.state = RUNNING_STATE; //resume the game
+    }
+
+    public void setMaxNumRounds(int maxNumRounds) {
+        this.maxNumRounds = maxNumRounds;
     }
 }

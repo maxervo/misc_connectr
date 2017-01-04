@@ -7,10 +7,10 @@ public class Main{
 
   public static void main(String[] args){
     Game game = new Game();
-    int timer = 0;
-    int executionSpeed = 0;
+    int timer;
+    int executionSpeed;
 
-    //Game Loop
+    //Game Loop - with Refresh Rate
     while (game.manager()) {
       timer = (int) System.currentTimeMillis();
       executionSpeed = (int) System.currentTimeMillis() - timer;

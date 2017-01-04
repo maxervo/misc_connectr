@@ -11,9 +11,6 @@ import java.util.List;
 import java.util.stream.IntStream;
 import javax.swing.*;
 
-/**
- * Created by rstoke on 12/30/16.
- */
 public class GUI extends UI {
     public static final int FRAME_WIDTH = 600;
     public static final int FRAME_HEIGHT = 400;
@@ -23,6 +20,13 @@ public class GUI extends UI {
     private JPanel gridPanel;
 
     private String decision;
+    /*
+    In order to avoid blocking the program, two implementations are possible for the GUI : threads or keeping the game loop flow.
+    We implemented here the GUI with keeping the game loop flow (different states for the game, and a decision input here which is always updated)
+    A game loop refresh rate was implemented in Main in order to :
+    - control the processor utilization (keeping it to a minimal rate)
+    - allow future improvements such as game animations (e.g explosions when the player carries out a connect 4 win...etc)
+     */
 
     public GUI(Grid grid, List<Integer> score) {
         //Main Frame

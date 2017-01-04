@@ -6,9 +6,6 @@ import com.company.product.Main;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * Created by rstoke on 12/30/16.
- */
 public class CLI extends UI {
     private Scanner sc = new Scanner(System.in);
 
@@ -21,6 +18,7 @@ public class CLI extends UI {
     public void displayGrid(Grid grid) {
         char[][] dataGrid = grid.getGrid();
 
+        //Assign numbers to columns
         for(int k = 1; k <= grid.getWidth(); k++){
             if (k<10) {
                 System.out.print(Integer.toString(k) + "  ");
@@ -31,6 +29,7 @@ public class CLI extends UI {
         }
         System.out.println();
 
+        //Building grid
         for(int i = 0; i < grid.getHeight(); i++){
             for(int j = 0; j < grid.getWidth(); j++){
                 if ( (j + 1) == grid.getWidth()){

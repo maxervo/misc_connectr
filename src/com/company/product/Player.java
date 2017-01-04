@@ -3,20 +3,17 @@ package com.company.product;
 import com.company.behavior.Behavior;
 import com.company.behavior.IAMonkeyStrategy;
 
-/**
- * Created by rstoke on 12/7/16.
- */
 public class Player {
     private int id;
     private String name;
     private Token token;
-    public Behavior behavior;   //public for syntactic sugar object.behavior.method
+    public Behavior behavior;   //strategy design pattern, public for syntactic sugar access : object.behavior.method
 
-    public Player() {
+    public Player(Grid grid) {
         this.id = 0;
         this.name = "";
         this.token = new Token();
-        this.behavior = new IAMonkeyStrategy();
+        this.behavior = new IAMonkeyStrategy(grid); //by default AI
     }
 
     public Player(int id, String name, Token token, Behavior behavior) {

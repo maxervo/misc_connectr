@@ -1,10 +1,8 @@
 package com.company.product;
 
 import java.io.*;
-import java.util.*;
-/**
- * Created by loic on 29/12/16.
- */
+import java.util.*; //TODO to clean up?
+
 public class History  {
 
     public final static String MSG_NEW_ROUND = "Manche Commence";

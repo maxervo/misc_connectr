@@ -6,29 +6,47 @@ import java.util.Scanner;
  *
  */
 public class Menu {
+    public static final int NUM_ARG = 2;  //when defining players: "ia:monkey Vador"
     private Scanner sc = new Scanner(System.in);
 
-    private String player1;
-    private String player2;
+    private int numPlayers;
+    private String[] playerInput;
+    private String[] playerName;
+    private String[] playerBehavior;
 
-    public Menu() {
-        System.out.println("Welcome to " + Main.PROGRAM_NAME);
-        this.player1 = "";
-        this.player2 = "";
+    public Menu(int numPlayers) {
+        this.numPlayers = numPlayers;    //CLI terminal query possible, respecting scope statement interface
+        this.playerInput = new String[NUM_ARG];
+        this.playerName = new String[numPlayers];
+        this.playerBehavior = new String[numPlayers];
     }
 
-    public void choosePlayerNames() {
-        //Player1 input
-        System.out.println("Joueur 1?");
-        do {
-            this.player1 = sc.nextLine();
-        } while(!validatePlayerName(player1));
+    public void getValidatedInputs() {
 
-        //Player2 input
-        System.out.println("Joueur 2?");
+        for(int i=0; i<this.numPlayers; i++) {
+            System.out.println("Joueur " + (i+1) + "?");
+
+            //Player i input
+            promptUser(i);
+        }
+    }
+
+    private void promptUser(int i) {
+
         do {
-            this.player2 = sc.nextLine();
-        } while(!validatePlayerName(player2));
+            this.playerInput = sc.nextLine().split("\\s+");
+
+            //format
+            if(playerInput.length == 1) {
+                System.err.println("Define your behavior as follows: human <name> or ia:monkey <name>.");
+                continue;
+            }
+
+            //defining player
+            this.playerBehavior[i] = this.playerInput[0];
+            this.playerName[i] = this.playerInput[1];
+
+        } while(playerInput.length == 1 || !(validatePlayerName(this.playerName[i]) && validatePlayerBehavior(this.playerBehavior[i])));
     }
 
     /* Utilities */
@@ -49,12 +67,25 @@ public class Menu {
         return (name.matches(regex)) && (name.length() < maxLength);
     }
 
-    /* Getters */
-    public String getPlayer1() {
-        return player1;
+    private boolean validatePlayerBehavior(String behavior) {
+        if(!(behavior.equals("human") || behavior.equals("ia:monkey"))) {
+            System.err.println("Define your behavior as follows: human <name> or ia:monkey <name>.");
+        }
+
+        return (behavior.equals("human") || behavior.equals("ia:monkey"));
     }
 
-    public String getPlayer2() {
-        return player2;
+    /* Getters */
+
+    public int getNumPlayers() {
+        return numPlayers;
+    }
+
+    public String[] getPlayerName() {
+        return playerName;
+    }
+
+    public String[] getPlayerBehavior() {
+        return playerBehavior;
     }
 }

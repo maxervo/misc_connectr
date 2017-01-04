@@ -1,21 +1,18 @@
 package com.company.product;
 
-/**
- * Created by rstoke on 12/7/16.
- */
-
 public class Grid {
 
     private char grid[][];
     private int height;
     private int width;
 
+    /* TODO can be removed then
     public Grid() {
         this.width = 7;
         this.height = 6;
         this.grid = new char[this.height][this.width];
         reset();
-    }
+    }*/
 
     public Grid(int height, int width){
         setGridResolution(height, width);
@@ -23,16 +20,11 @@ public class Grid {
         reset();
     }
 
-    // TODO Private?
-    // private method
+    //public method accessed by resume() when clearing the grid
     public void reset() {
         for(int i = 0; i < this.height; i++){
             for(int j = 0; j < this.width; j++){
-                //if (i==0){
-                  //  this.grid[i][j] = (char)(j + '0');
-                //}else{
-                    this.grid[i][j] = '.';
-                //}
+                this.grid[i][j] = '.';
             }
         }
     }
@@ -62,7 +54,7 @@ public class Grid {
         return false;
     }
 
-    private boolean upperLineFull(){
+    private boolean upperLineFull() {
         int  occu = 0;
         for (int j = 0; j < this.width; j++) {
             if (grid[0][j] != '.'){
@@ -83,10 +75,8 @@ public class Grid {
     }
 
     public void addToken(Token token, int col) throws OutOfGridException, ColumnFullException, DrawException {
-        //boolean upperLineFull = false;  //TODO for draw
-        //Arrays.stream(this.grid[0]).forEach(x -> x = Token.isTokenValue(x)? 1:0).sum() == this.width;
 
-        if(col <=0 || col>=this.width){
+        if(col <0 || col>=this.width){
             throw new OutOfGridException(col);
         }
         else if (upperLineFull()) {
@@ -107,9 +97,7 @@ public class Grid {
         }
     }
 
-    //TODO maybe think better algorithm, instead of verifying whole, do it at end of every turn and raise exception,
-    //maybe verify at the end of "add token" because victory linked to end of action of a player
-    public boolean isNotFinished(Token token){
+    public boolean isFinished(Token token){
         int flagVictory[] = new int[8];
 
         for (int i =1; i< this.height; i++){
@@ -155,13 +143,13 @@ public class Grid {
                     // check if somebody won
                     for (int l=0; l < flagVictory.length; l++){
                         if (flagVictory[l] == 4){
-                            return false;
+                            return true;
                         }
                     }
                 }
             }
         }
-        return true;
+        return false;
     }
 
     public int getHeight() {
