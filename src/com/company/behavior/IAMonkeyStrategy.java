@@ -17,7 +17,6 @@ public class IAMonkeyStrategy implements Behavior {
         int higherBound = this.systemWidth+1;   //excluded
 
         return Integer.toString( (int) (Math.random() * (higherBound-lowerBound) + lowerBound) ); //random choice
-        //return (Double.toString(Math.random() * (7 - 1 + 1)) + 1);      //TODO adapt with width of grid, ok done, test it if ok?
     }
 
 }

@@ -2,9 +2,6 @@ package com.company.product;
 
 import java.util.Scanner;
 
-/**
- *
- */
 public class Menu {
     public static final int NUM_ARG = 2;  //when defining players: "ia:monkey Vador"
     private Scanner sc = new Scanner(System.in);
