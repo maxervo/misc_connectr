@@ -2,7 +2,6 @@ package com.company.ui;
 
 import com.company.product.Game;
 import com.company.product.Grid;
-import com.company.product.Player;
 import com.company.product.History;
 
 import java.util.List;
@@ -21,8 +20,6 @@ public abstract class UI {      //No need: strategy pattern because no need for 
 
     public abstract void displayGrid(Grid grid);
 
-    // TODO remove duplication code in display CLI and GUI
-    // TODO not abstract maybe? and use super.displayStatus() -> It's ok because CLI/GUI different entities and their code are in fact independent (score were written the same way because quick++ but normally they should have different representations depending on CLI or GUI) so OK, but yeah good remark Walt
     protected abstract void displayStatus(String statusMsg, List<Integer> score);
 
     //input
@@ -31,10 +28,8 @@ public abstract class UI {      //No need: strategy pattern because no need for 
     //output
     public void statusVictory(int id, List<Integer> score) {
         displayStatus(UI.MSG_VICTORY, score);
-        this.history.save("Joueur 1 " + id + " gagne");
+        this.history.save("Joueur " + id + " gagne");
 
-        // TODO save the score without code duplication
-        // TODO not beautiful but score is asked to be written like that
         String scoreLine = "";
         boolean flag = false;
         for (int playerScore : score) {
@@ -45,7 +40,7 @@ public abstract class UI {      //No need: strategy pattern because no need for 
                 scoreLine += " - " + playerScore;
             }
         }
-        this.history.save(scoreLine);
+        this.history.save("Score " + scoreLine);
     }
 
     public void statusDraw(List<Integer> score) {
@@ -59,19 +54,19 @@ public abstract class UI {      //No need: strategy pattern because no need for 
     }
 
     public void statusPlayerTurn(String playerName, int id, int decide, List<Integer> score) {
-        displayStatus(playerName + "'s turn ended...", score);
+        displayStatus(playerName + " a fini son tour", score);
         this.history.save("Joueur " + id + " joue " + (decide + 1));
     }
 
     public void statusEnd(List<Integer> score) {
         if (score.get(0) > score.get(1)) {
-            displayStatus("THE END : Player1 has won and Player2 has lost.", score);
+            displayStatus("FIN : Joueur 1 a gagné et joueur 2 a perdu", score);
         }
         else if (score.get(0) < score.get(1)){
-            displayStatus("THE END : Player2 has won and Player1 has lost.", score);
+            displayStatus("FIN : Joueur 2 a gagné et joueur 1 a perdu", score);
         }
         else {
-            displayStatus("THE END : it's a draw.", score);
+            displayStatus("FIN : Egalité.", score);
         }
         this.history.save(this.history.MSG_END_GAME);
         this.history.close();
@@ -83,9 +78,9 @@ public abstract class UI {      //No need: strategy pattern because no need for 
 
     }
 
-    public void statusGamesPlayers(List<Player> playerPool) {   //TODO write also the identity (human, ia:Monkey...)
-        for (int i = 0; i < playerPool.size(); i++) {
-            this.history.save("Joueur " + (i + 1) + " est " + playerPool.get(i).getName());
+    public void statusGamesPlayers(String[] playerName, String[] playerBehavior) {
+        for (int i = 0; i < playerName.length; i++) {
+            this.history.save("Joueur " + (i + 1) + " est " + playerBehavior[i] + " " + playerName[i]);
         }
 
     }

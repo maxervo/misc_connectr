@@ -53,7 +53,7 @@ public class Game{
         //Init UI
         this.ui = new CLI(grid, score);             //CLI terminal query possible, scope statement definition needed to choose between UIs
         //this.ui = new GUI(grid, score);
-        this.ui.statusGamesPlayers(this.playerPool);
+        this.ui.statusGamesPlayers(this.menu.getPlayerName(), this.menu.getPlayerBehavior());
     }
 
     public boolean manager() {  //return value for continuing/ending game

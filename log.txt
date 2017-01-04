@@ -1,32 +1,24 @@
-Joueur 1 est max
-Joueur 2 est loic
+Joueur 1 est human loic
+Joueur 2 est ia:monkey boloss
+Joueur 1 joue 5
+Joueur 2 joue 7
+Joueur 1 joue 6
+Joueur 2 joue 7
+Joueur 1 joue 7
+Joueur 2 joue 3
+Joueur 1 joue 4
+Joueur 2 joue 5
 Joueur 1 joue 1
-Joueur 2 joue 2
+Joueur 2 joue 4
+Joueur 1 joue 8
+Joueur 2 joue 7
 Joueur 1 joue 1
-Joueur 2 joue 2
+Joueur 2 joue 7
 Joueur 1 joue 1
-Joueur 2 joue 2
-Joueur 1 joue 1
-Joueur 1 1 gagne
-1 - 0
-Manche Commence
-Joueur 2 joue 2
-Joueur 1 joue 1
-Joueur 2 joue 2
-Joueur 1 joue 1
-Joueur 2 joue 2
-Joueur 1 joue 1
-Joueur 2 joue 2
+Joueur 2 joue 6
 Joueur 1 2 gagne
-1 - 1
-Joueur 1 joue 1
-Joueur 2 joue 2
-Joueur 1 joue 1
-Joueur 2 joue 2
-Joueur 1 joue 1
-Joueur 2 joue 2
-Joueur 1 joue 1
-Joueur 1 1 gagne
-2 - 1
+0 - 1
 Manche Commence
-Partie finie
+Joueur 2 joue 4
+Joueur 1 joue 1
+Joueur 2 joue 5
