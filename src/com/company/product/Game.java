@@ -2,7 +2,6 @@ package com.company.product;
 import com.company.behavior.HumanStrategy;
 import com.company.ui.CLI;
 import com.company.ui.UI;
-import com.company.ui.GUI;
 
 import java.util.*;
 
@@ -46,6 +45,7 @@ public class Game{
         //Init UI
         this.ui = new CLI(grid, score);     //TODO how does teacher want to switch GUI/CLI in UI terminal?
         //this.ui = new GUI(grid, score);
+        this.ui.statusGamesPlayers(this.playerPool);
     }
 
     public boolean manager() {  //return value for continuing/ending game
@@ -62,14 +62,16 @@ public class Game{
         //Playing
         try {
             return play(player);    //keep playing, or quits based on decision
-        } catch(ExceptionOutOfGrid e) {
+        } catch(OutOfGridException e) {
             this.playerPoolIterator.previous();  //loop with same player
             this.ui.statusOutOfGrid(this.score);
+        } catch(ColumnFullException e) {
+            this.playerPoolIterator.previous();  //loop with same player
         } catch(VictoryException e) {
             int playerIndex = player.getId()-1;
             this.score.set(playerIndex, this.score.get(playerIndex)+1); //gain points
             this.state = PAUSE_STATE;
-            this.ui.statusVictory(this.score);
+            this.ui.statusVictory(player.getId(), this.score);
         } catch(DrawException e) {
             this.state = PAUSE_STATE;
             this.ui.statusDraw(this.score);
@@ -86,7 +88,7 @@ public class Game{
         }
     }
 
-    private boolean play(Player player) throws ExceptionOutOfGrid, VictoryException, DrawException {
+    private boolean play(Player player) throws OutOfGridException, ColumnFullException, VictoryException, DrawException {
         String decision = player.behavior.decide(this.ui);
 
         //Not decided
@@ -97,7 +99,7 @@ public class Game{
         //Resume
         else if(this.state.equals(this.PAUSE_STATE) && decision.equals(this.RESUME_CMD)) {
             resume();   //prepare next round
-            this.ui.statusNewGame(score);
+            this.ui.statusNewRound(score);
             this.ui.displayGrid(this.grid);
         }
 
@@ -112,11 +114,11 @@ public class Game{
             try {
                 this.grid.addToken(player.getToken(), Integer.parseInt(decision));
                 this.ui.displayGrid(this.grid);     //Graphics when change, due to slow reload of JFrame
-                this.ui.statusPlayerTurn(player.getName(), score);
+                this.ui.statusPlayerTurn(player.getName(), player.getId(), Integer.parseInt(decision),  score);
             }
             catch (NumberFormatException e) {
                 this.playerPoolIterator.previous();  //loop with same player
-                this.ui.statusFormatInput(score);
+                this.ui.statusFormatInput(player.getId(), score);
             }
 
             //TODO tmp
@@ -127,7 +129,7 @@ public class Game{
 
         //Request correct input
         else {
-            this.ui.statusFormatInput(score);
+            this.ui.statusFormatInput(player.getId(), score);
         }
 
         return true;

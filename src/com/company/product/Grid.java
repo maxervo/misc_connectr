@@ -61,12 +61,12 @@ public class Grid {
         return this.grid;
     }
 
-    public void addToken(Token token, int col) throws ExceptionOutOfGrid, DrawException {
+    public void addToken(Token token, int col) throws OutOfGridException, ColumnFullException, DrawException {
         //boolean upperLineFull = false;  //TODO for draw
         //Arrays.stream(this.grid[0]).forEach(x -> x = Token.isTokenValue(x)? 1:0).sum() == this.width;
 
         if(col <=0 || col>=this.width){
-            throw new ExceptionOutOfGrid();
+            throw new OutOfGridException(col);
         }
         else if (upperLineFull()) {
             throw new DrawException();
@@ -79,7 +79,7 @@ public class Grid {
                 }
                 else{
                     if (i == 0){ // if there is no more space for a new token
-                        throw new ExceptionOutOfGrid(col);
+                        throw new ColumnFullException(col);
                     }
                 }
             }

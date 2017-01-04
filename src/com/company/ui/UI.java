@@ -2,6 +2,8 @@ package com.company.ui;
 
 import com.company.product.Game;
 import com.company.product.Grid;
+import com.company.product.Player;
+import com.company.product.History;
 
 import java.util.List;
 
@@ -14,13 +16,15 @@ public abstract class UI {      //No need of strategy pattern because no need fo
     public final static String MSG_OUT_OF_GRID = "Token out of grid. Please position the token inside.";
     public final static String MSG_VICTORY = "Congratulations you won! Do you want to continue? " + MSG_ALTERNATIVE;
     public final static String MSG_DRAW = "It was a draw! Do you want to continue? " + MSG_ALTERNATIVE;
-    public final static String MSG_NEW_GAME = "A new game has started!"; //TODO better to say round than game
+    public final static String MSG_NEW_ROUND = "A new round has started!";
 
-    //History
-    public final static String MSG_NEW_ROUND = "Manche Commence";
-    //END History
+
+    protected History history = new History();
 
     public abstract void displayGrid(Grid grid);
+
+    // TODO remove duplication code in display CLI and GUI
+    // TODO not abstract maybe? and use super.diplayStatus()
     protected abstract void displayStatus(String statusMsg, List<Integer> score);
 
     //input
@@ -31,41 +35,60 @@ public abstract class UI {      //No need of strategy pattern because no need fo
         displayStatus(UI.MSG_OUT_OF_GRID, score);
     }
 
-    public void statusVictory(List<Integer> score) {
+    public void statusVictory(int id, List<Integer> score) {
         displayStatus(UI.MSG_VICTORY, score);
+        this.history.save("Joueur 1 " + id + " gagne");
+
+        // TODO save the score without code duplication
+        // TODO not beautiful but score is asked to be written like that
+        String scoreLine = "";
+        boolean flag = false;
+        for (int playerScore : score) {
+            if (!flag) {
+                scoreLine += playerScore;
+                flag = true;
+            } else {
+                scoreLine += " - " + playerScore;
+            }
+        }
+        this.history.save(scoreLine);
     }
 
     public void statusDraw(List<Integer> score) {
         displayStatus(UI.MSG_DRAW, score);
+        this.history.save(History.MSG_DRAW);
     }
 
-    public void statusNewGame(List<Integer> score) {
-        displayStatus(UI.MSG_NEW_GAME, score);
+    public void statusNewRound(List<Integer> score) {
+        displayStatus(UI.MSG_NEW_ROUND, score);
+        this.history.save(History.MSG_NEW_ROUND);
     }
 
-    public void statusPlayerTurn(String playerName, List<Integer> score) {
+    public void statusPlayerTurn(String playerName, int id, int decide, List<Integer> score) {
         displayStatus(playerName + "'s turn ended...", score);
+        this.history.save("Joueur " + id + " joue " + (decide + 1));
     }
 
     public void statusEnd(List<Integer> score) {
-        if(score.get(0) > score.get(1)) {
+        if (score.get(0) > score.get(1)) {
             displayStatus("THE END : Player1 has won and Player2 has lost.", score);
-        }
-        else {
+        } else {
             displayStatus("THE END : Player2 has won and Player1 has lost.", score);
         }
+        this.history.save(this.history.MSG_END_GAME);
+        this.history.close();
     }
 
-    public void statusFormatInput(List<Integer> score) {
-        displayStatus("Non valid input in this current game state. Please enter a correct position, or a correct command.", score);
+    public void statusFormatInput(int id, List<Integer> score) {
+        //displayStatus("Non valid input in this current game state. Please enter a correct position, or a correct command.", score);
+        displayStatus("Erreur saisie Joueur " + id, score);
+
     }
 
-    //History
-    public void statusNewRound(List<Integer> score) {
-        displayStatus(UI.MSG_NEW_ROUND, score);
+    public void statusGamesPlayers(List<Player> playerPool) {   //TODO write also the identity (human, ia:Monkey...)
+        for (int i = 0; i < playerPool.size(); i++) {
+            this.history.save("Joueur " + (i + 1) + " est " + playerPool.get(i).getName());
+        }
+
     }
-
-    //END History
-
-
 }

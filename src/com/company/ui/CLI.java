@@ -52,6 +52,7 @@ public class CLI extends UI {
         }
         System.out.println(scoreLine);
 
+
         //Msg
         System.out.println(statusMsg);
     }

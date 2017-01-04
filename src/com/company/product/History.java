@@ -7,9 +7,14 @@ import java.util.*;
  */
 public class History  {
 
+    public final static String MSG_NEW_ROUND = "Manche Commence";
+    public final static String MSG_END_GAME = "Partie finie";
+    public final static String MSG_DRAW = "Egalité";
+
 
     private File file;
     private FileWriter writer;
+
 
     public History() {
         try {
@@ -23,97 +28,23 @@ public class History  {
         }
     }
 
-    public void writeHistory(String msg){
-
-    }
-
-    public void setPlayers(List<Player> playerPool) {
-        try {
-            for(int i = 0; i< playerPool.size(); i++) {
-                writer.write("Joueur " + (i+1) + " est " + playerPool.get(i).getName() + "\n");
-                writer.flush(); // important
-            }
-        } catch (IOException e){
-            System.err.println("error write");
-        }
-    }
-    public void setRound() {
+    public void save(String msg){
         try{
-            writer.write("Manche commence\n");
+            writer.write(msg + "\n");
             writer.flush(); // important
         } catch (IOException e){
             System.err.println("error write");
         }
     }
 
-    public void setPlay(Player player, int decide) {
+    public void close(){
         try{
-            writer.write("Joueur " + player.getId() + " joue " + (decide +1) + "\n");
-            writer.flush(); // important
-        } catch (IOException e){
-            System.err.println("error write");
-        }
-    }
-
-    public void setResultRound(Player player, boolean win) {
-        try{
-            if (win) {
-                writer.write("Joueur " + player.getId() + " gagne \n");
-                writer.flush(); // important
-            }
-            else {
-                writer.write("Egalité \n");
-                writer.flush(); // important
-            }
-        } catch (IOException e){
-            System.err.println("error write");
-        }
-    }
-
-    public void setScore(List<Integer> score){
-        try{
-            String scoreLine = "";
-            boolean flag = false;
-            //Display score
-            for (int playerScore : score) {
-                if (!flag) {
-                    scoreLine += playerScore;
-                    flag = true;
-                } else {
-                    scoreLine += " - " + playerScore;
-                }
-            }
-            writer.write("Score " + scoreLine + "\n");
-            writer.flush(); // important
-        } catch (IOException e){
-            System.err.println("error write");
-        }
-    }
-    public void setEndGame(){
-        try{
-            writer.write("Partie finie \n");
-            writer.flush(); // important
             writer.close();
         } catch (IOException e){
-            System.err.println("error write");
+            System.err.println("error close");
         }
     }
 
-    public static void setEndGameStatic(){
-        try{
-            File file;
-            FileWriter writer;
-            file = new File("log.txt");
-            // creates the file
-            file.createNewFile();
-            // creates a FileWriter Object
-            writer = new FileWriter(file, true); // append true
 
-            writer.write("Partie finie \n");
-            writer.flush(); // important
-            writer.close();
-        } catch (IOException e){
-            System.err.println("error write");
-        }
-    }
+
 }
