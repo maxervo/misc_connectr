@@ -108,8 +108,10 @@ public class Game{
         //Resume
         else if(this.state.equals(this.PAUSE_STATE)) {  //&& decision.equals(this.RESUME_CMD) : scope statement does not specifies if new round started automatically
             resume();   //prepare next round
-            this.ui.statusNewRound(score);
-            this.ui.displayGrid(this.grid);
+            if(numRound != maxNumRounds) {
+                this.ui.statusNewRound(score);
+                this.ui.displayGrid(this.grid);
+            }
         }
 
         //Quit

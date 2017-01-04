@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="000f7203-71fb-4dd6-a495-a4adfd6125ab" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log.txt" afterPath="$PROJECT_DIR$/log.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/behavior/IAMonkeyStrategy.java" afterPath="$PROJECT_DIR$/src/com/company/behavior/IAMonkeyStrategy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/Menu.java" afterPath="$PROJECT_DIR$/src/com/company/product/Menu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/company/product/Game.java" afterPath="$PROJECT_DIR$/src/com/company/product/Game.java" />
     </list>
     <ignored path="connectr.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/product/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="100" column="9" selection-start-line="100" selection-start-column="9" selection-end-line="100" selection-end-column="9" />
+            <state relative-caret-position="337">
+              <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -81,10 +80,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/ui/UI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1420">
+            <state relative-caret-position="2457">
               <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -217,9 +216,9 @@
         <option value="$PROJECT_DIR$/src/com/company/product/Token.java" />
         <option value="$PROJECT_DIR$/src/com/company/ui/UI.java" />
         <option value="$PROJECT_DIR$/src/com/company/ui/GUI.java" />
-        <option value="$PROJECT_DIR$/src/com/company/product/Game.java" />
         <option value="$PROJECT_DIR$/src/com/company/behavior/IAMonkeyStrategy.java" />
         <option value="$PROJECT_DIR$/src/com/company/product/Menu.java" />
+        <option value="$PROJECT_DIR$/src/com/company/product/Game.java" />
       </list>
     </option>
   </component>
@@ -827,16 +826,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/ui/CLI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-304">
-          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/behavior/HumanStrategy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -863,6 +852,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/product/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/ui/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1631">
@@ -873,20 +872,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/ui/UI.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/ui/CLI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1420">
-          <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
+        <state relative-caret-position="-304">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/product/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/com/company/ui/UI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="100" column="9" selection-start-line="100" selection-start-column="9" selection-end-line="100" selection-end-column="9" />
+        <state relative-caret-position="2457">
+          <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

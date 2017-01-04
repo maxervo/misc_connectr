@@ -3,34 +3,30 @@ Joueur 2 est loic
 Joueur 1 joue 1
 Joueur 2 joue 2
 Joueur 1 joue 1
-Joueur 2 joue 1
-Joueur 1 joue 2
-Joueur 2 joue 1
-Joueur 1 joue 2
-Joueur 2 joue 1
-Joueur 1 joue 2
-Joueur 2 joue 1
-Joueur 1 2 gagne
-0 - 1
-Manche Commence
-Joueur 2 joue 1
-Joueur 1 joue 2
-Joueur 2 joue 1
-Joueur 1 joue 2
-Joueur 2 joue 1
-Joueur 1 joue 2
-Joueur 2 joue 1
-Joueur 1 2 gagne
-0 - 2
-Manche Commence
-Joueur 1 joue 2
-Joueur 2 joue 1
-Joueur 1 joue 2
-Joueur 2 joue 1
-Joueur 1 joue 2
-Joueur 2 joue 1
-Joueur 1 joue 2
+Joueur 2 joue 2
+Joueur 1 joue 1
+Joueur 2 joue 2
+Joueur 1 joue 1
 Joueur 1 1 gagne
-1 - 2
+1 - 0
+Manche Commence
+Joueur 2 joue 2
+Joueur 1 joue 1
+Joueur 2 joue 2
+Joueur 1 joue 1
+Joueur 2 joue 2
+Joueur 1 joue 1
+Joueur 2 joue 2
+Joueur 1 2 gagne
+1 - 1
+Joueur 1 joue 1
+Joueur 2 joue 2
+Joueur 1 joue 1
+Joueur 2 joue 2
+Joueur 1 joue 1
+Joueur 2 joue 2
+Joueur 1 joue 1
+Joueur 1 1 gagne
+2 - 1
 Manche Commence
 Partie finie
