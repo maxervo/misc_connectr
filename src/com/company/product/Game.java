@@ -30,7 +30,9 @@ public class Game{
     public Game() {
 
         //Init components
-        this.grid = new Grid();
+        //this.grid = new Grid(); // TODO choice
+        this.grid = new Grid(9,8);
+
         this.menu = new Menu();
 
         //Create players

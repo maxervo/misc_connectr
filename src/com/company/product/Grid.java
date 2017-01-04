@@ -7,14 +7,23 @@ package com.company.product;
 public class Grid {
 
     private char grid[][];
-    private int height = 5; //TODO no more magic numbers in the code, flexible
-    private int width = 5;
+    private int height;
+    private int width;
 
     public Grid() {
+        this.width = 7;
+        this.height = 6;
         this.grid = new char[this.height][this.width];
         reset();
     }
 
+    public Grid(int height, int width){
+        setGridResolution(height, width);
+        this.grid = new char[this.height][this.width];
+        reset();
+    }
+
+    // TODO Private?
     // private method
     public void reset() {
         for(int i = 0; i < this.height; i++){
@@ -25,6 +34,18 @@ public class Grid {
                     this.grid[i][j] = '.';
                 //}
             }
+        }
+    }
+
+    private void setGridResolution(int height, int width){
+        if(((height * width) % 2 == 0) && ((height * width) >= 8) && width >=4){
+            this.height = height;
+            this.width = width;
+        }
+        else{
+            this.width = 7;
+            this.height = 6;
+            System.err.println("Erreur de taille de grille. Vous continuez avec une grille traditionelle");
         }
     }
 
