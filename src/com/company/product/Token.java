@@ -17,10 +17,6 @@ public class Token {
         }
     }
 
-    public static boolean isTokenValue(char val) {
-        return (val == 'x')||(val == 'o');
-    }
-
     public char getToken(){
         return this.token;
     }
